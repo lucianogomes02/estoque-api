@@ -18,3 +18,10 @@ class ProdutosTestCase(APITestCase):
     def test_get_produtos(self):
         resposta = self.client.get(self.list_url)
         self.assertEqual(resposta.status_code, status.HTTP_200_OK)
+
+    def test_post_produto(self):
+        dados = {"nome": "Produto Teste 3", "tipo": "TRUFA"}
+
+        resposta = self.client.post(self.list_url, data=dados)
+
+        self.assertEqual(resposta.status_code, status.HTTP_201_CREATED)
